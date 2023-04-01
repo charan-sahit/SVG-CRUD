@@ -13,7 +13,7 @@ const Navbar = () => {
       <AppBar position="static">
         <Toolbar>
           <Typography
-            variant="h6"
+            variant="h5"
             component="div"
             sx={{ cursor: "pointer" }}
             onClick={() => navigate("/")}

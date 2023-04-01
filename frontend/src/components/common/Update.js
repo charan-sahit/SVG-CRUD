@@ -43,9 +43,22 @@ const Update = () => {
   
     return (
     <div>
-        <h1>Update Game Details</h1>
+        
         {/* add checkboxes whether game name, author, url have to be updated, and then enable texfields for input */}
-        <div class="checkbox-container" >
+        <div
+        style={{
+
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            // justifyContent: "space-around",
+            // marginLeft: "1.2em",
+            marginTop: "1em",
+            marginBottom: "1em",
+        }}
+        >
+          <h1>Update Game Details</h1>
+        <div class="checkbox-container"  >
         <input type="checkbox" id="gameName" name="gameName" value="gameName"  onChange={handleGameNameChange}/>
         <label for="gameName" style={{marginRight:'3em'}}> Game Name</label>
         <input type="text" id="gameName"  value={gameName} disabled={!isCheckedGameName} onChange={(event) => setGameName(event.target.value)}></input><br></br>
@@ -69,8 +82,6 @@ const Update = () => {
         <input type="text" id="pubDate" name="pubDate" value={pubDate} disabled={!isCheckedPubDate} onChange={(event) => setPubDate(event.target.value)}></input><br></br>
         </div>
 
-        
-
         <Button
 
           style={{
@@ -86,7 +97,7 @@ const Update = () => {
             pubDate: pubDate === "" ? localStorage.getItem("pubDate") : pubDate,
           })
           // .then((response) => {
-            alert("Updated\t" + response.data.gameName);
+            // alert("Updated\t" + response.data.gameName);
             console.log(response.data);
           // });
 
@@ -94,12 +105,16 @@ const Update = () => {
           // localStorage.clear();
 
           // navigate to /dashboard
-          window.location.href = "/";
+          window.location.href = "/dashboard";
 
          }} 
         >
         Update
         </Button>
+        </div>
+        
+
+        
     </div>
   )
 }

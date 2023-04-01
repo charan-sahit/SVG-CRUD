@@ -76,7 +76,7 @@ const Home = (props) => {
         </Grid>
         <Grid item xs={2}>
           <TextField
-            label="Publish Date"
+            label="Publish Date (dd-mm-yy)"
             variant="outlined"
             value={pubDate}
             onChange={(event) => setPubDate(event.target.value)}
@@ -84,6 +84,50 @@ const Home = (props) => {
         </Grid>
         <Grid item xs={2}>
           <Button variant="contained" onClick={async () => {
+            // check if all fields are filled 
+            if (gameName === "" ) {
+              alert("Please fill in the Game Name");
+              return;
+            }
+
+            if(url === "") {
+              alert("Please fill in the URL");
+              return;
+            }
+
+            if(author === "") {
+              alert("Please fill in the Author");
+              return;
+            }
+
+            // check if date is in dd-mm-yy format
+            if(pubDate === "") {
+              alert("Please fill in the Publish Date");
+              return;
+            }
+            else {
+              const date = pubDate.split("-");
+              if(date.length !== 3) {
+                alert("Please fill in the Publish Date in dd-mm-yy format");
+                return;
+              }
+              if(date[0].length > 2 || date[1].length > 2 || date[2].length > 2) {
+                alert("Please fill in the Publish Date in dd-mm-yy format");
+                return;
+              }
+              if(isNaN(date[0]) || isNaN(date[1]) || isNaN(date[2])) {
+                alert("Please fill in the Publish Date in dd-mm-yy format");
+                return;
+              }  
+            } 
+            
+            const pattern =  /^https?:\/\/[\w.-]+\.[a-z]{2,}$/i;
+            if(!pattern.test(url)) {
+              alert("Please fill in a valid URL");
+              return;
+            }
+
+
             const newGame = {
               gameName: gameName,
               url: url,
@@ -109,7 +153,8 @@ const Home = (props) => {
 
       <div>
         <h1>Games Catalogue</h1>
-        <div style={{ display: 'flex', justifyContent: 'left' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', justifyContent: 'start' }}>
+        {/* <div style={{ display: 'flex', justifyContent: 'left' }}> */}
         {games.map((game) => (
           <div style={{
             
@@ -134,6 +179,12 @@ const Home = (props) => {
                 <h3>{game.gameName}</h3>
                 <Button
                   onClick={async () => {
+                    // confirm deletion
+                    if (window.confirm("Are you sure you want to delete this game?") === false) {
+                      return;
+                    }
+
+
                     const response = await axios.delete("https://svg-crud-bqpq.onrender.com/game/delete/" + game._id)
                     // .then((response) => {
                       // alert("Deleted\t" + response.data.gameName);
@@ -147,7 +198,8 @@ const Home = (props) => {
                 >delete</Button>
                 
                 </div>
-                <p>{game.url}</p>
+                <a href={game.url}>{game.url}</a>
+                {/* <p>{game.url}</p> */}
                 <p>Author: {game.author}</p>
                 <div
                   style={{
