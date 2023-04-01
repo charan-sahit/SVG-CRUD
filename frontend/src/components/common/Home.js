@@ -18,6 +18,7 @@ const Home = (props) => {
   const [author, setAuthor] = useState("");
   const [pubDate, setPubDate] = useState("");
   const [games, setGames] = useState([]);
+  const [buttonClicked, setButtonClicked] = useState(false);
 
 
   useEffect(() => {
@@ -28,12 +29,15 @@ const Home = (props) => {
       console.log(response.data);
       setGames(response.data);
     });
-  }, []);  
+  }, [buttonClicked]);  
   const navigate = useNavigate();
-  useEffect(() => {
-    setName("Dass TAs");
-  }, []);
-
+ 
+  const resetInputs = () => {
+    setGameName("");
+    setUrl("");
+    setAuthor("");
+    setPubDate("");
+  };
   
 
   
@@ -79,23 +83,22 @@ const Home = (props) => {
           />
         </Grid>
         <Grid item xs={2}>
-          <Button variant="contained" onClick={() => {
+          <Button variant="contained" onClick={async () => {
             const newGame = {
               gameName: gameName,
               url: url,
               author: author,
               pubDate: pubDate
             };
-            axios
-              .post("https://svg-crud-bqpq.onrender.com/game/add", newGame)
+            const response = await axios.post("https://svg-crud-bqpq.onrender.com/game/add", newGame)
 
-              .then((response) => {
+              // .then((response) => {
                 alert("Created\t" + response.data.gameName);
                 console.log(response.data);
-              });
-
+              // });
+              setButtonClicked(!buttonClicked);
             // window.location.reload();
-              // resetInputs();
+              resetInputs();
           }}>
             Create Game
           </Button>
@@ -130,15 +133,16 @@ const Home = (props) => {
                 >
                 <h3>{game.gameName}</h3>
                 <Button
-                  onClick={() => {
-                    axios
-                    .delete("https://svg-crud-bqpq.onrender.com/game/delete/" + game._id)
-                    .then((response) => {
+                  onClick={async () => {
+                    const response = await axios.delete("https://svg-crud-bqpq.onrender.com/game/delete/" + game._id)
+                    // .then((response) => {
                       alert("Deleted\t" + response.data.gameName);
                       console.log(response.data);
-                    });
+                      setButtonClicked(!buttonClicked);
+                      
+                    // });
 
-                    window.location.reload();
+                    // window.location.reload();
                   }}
                 >delete</Button>
                 

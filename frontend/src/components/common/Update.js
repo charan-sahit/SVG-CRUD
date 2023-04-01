@@ -78,18 +78,17 @@ const Update = () => {
             marginLeft: "1.2em",
           }}
 
-         onClick={ () =>{
-          axios
-          .post("https://svg-crud-bqpq.onrender.com/game/update/" + localStorage.getItem("id"), {
+         onClick={ async () =>{
+           const response = await axios.post("https://svg-crud-bqpq.onrender.com/game/update/" + localStorage.getItem("id"), {
             gameName: gameName === "" ? localStorage.getItem("gameName") : gameName,
             url: url === "" ? localStorage.getItem("url") : url,
             author: author === "" ? localStorage.getItem("author") : author,
             pubDate: pubDate === "" ? localStorage.getItem("pubDate") : pubDate,
           })
-          .then((response) => {
+          // .then((response) => {
             alert("Updated\t" + response.data.gameName);
             console.log(response.data);
-          });
+          // });
 
           // clear local storage
           // localStorage.clear();
