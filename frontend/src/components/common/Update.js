@@ -2,6 +2,7 @@ import React from 'react'
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Update = () => {
   
     const [gameName, setGameName] = useState("");
@@ -14,6 +15,7 @@ const Update = () => {
     const [isCheckedAuthor, setIsCheckedAuthor] = useState(false);
     const [isCheckedPubDate, setIsCheckedPubDate] = useState(false);
 
+    const navigate = useNavigate();
     // read them  from local storage
     // setGameName(localStorage.getItem("gameName"));
     // setUrl(localStorage.getItem("url"));
@@ -105,7 +107,8 @@ const Update = () => {
           // localStorage.clear();
 
           // navigate to /dashboard
-          window.location.href = "/dashboard";
+          // window.location.href = "/dashboard";
+          navigate("/dashboard");
 
          }} 
         >
