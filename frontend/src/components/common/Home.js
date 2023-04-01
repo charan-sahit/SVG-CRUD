@@ -93,7 +93,7 @@ const Home = (props) => {
             const response = await axios.post("https://svg-crud-bqpq.onrender.com/game/add", newGame)
 
               // .then((response) => {
-                alert("Created\t" + response.data.gameName);
+                // alert("Created\t" + response.data.gameName);
                 console.log(response.data);
               // });
               setButtonClicked(!buttonClicked);
@@ -136,7 +136,7 @@ const Home = (props) => {
                   onClick={async () => {
                     const response = await axios.delete("https://svg-crud-bqpq.onrender.com/game/delete/" + game._id)
                     // .then((response) => {
-                      alert("Deleted\t" + response.data.gameName);
+                      // alert("Deleted\t" + response.data.gameName);
                       console.log(response.data);
                       setButtonClicked(!buttonClicked);
                       

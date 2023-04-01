@@ -21,9 +21,9 @@ const Navbar = () => {
             Simple Viral Games
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Button color="inherit" onClick={() => navigate("/login")}>
+          {/* <Button color="inherit" onClick={() => navigate("/login")}>
             Users
-          </Button>
+          </Button> */}
           {/* <Button color="inherit" onClick={() => navigate("/register")}>
             Register
           </Button>
