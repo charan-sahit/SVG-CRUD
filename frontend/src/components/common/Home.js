@@ -176,7 +176,7 @@ const Home = (props) => {
                     justifyContent: "space-between",
                   }}
                 >
-                <h3>{game.gameName}</h3>
+                <h2>{game.gameName}</h2>
                 <Button
                   onClick={async () => {
                     // confirm deletion
@@ -198,9 +198,13 @@ const Home = (props) => {
                 >delete</Button>
                 
                 </div>
-                <a href={game.url}>{game.url}</a>
+              
+                <a href={game.url} style={{marginTop:'2em'}}>
+                  {/* remove http */}
+                  {game.url.replace(/^https?:\/\//, '')}
+                </a>
                 {/* <p>{game.url}</p> */}
-                <p>Author: {game.author}</p>
+                <p  style={{marginTop:'1.5em'}}>Author: {game.author}</p>
                 <div
                   style={{
                     display: "flex",
