@@ -94,7 +94,7 @@ const Home = (props) => {
                 console.log(response.data);
               });
 
-            window.location.reload();
+            // window.location.reload();
               // resetInputs();
           }}>
             Create Game
