@@ -80,7 +80,7 @@ const Update = () => {
 
          onClick={ () =>{
           axios
-          .post("http://localhost:4000/game/update/" + localStorage.getItem("id"), {
+          .post("https://svg-crud-bqpq.onrender.com/game/update/" + localStorage.getItem("id"), {
             gameName: gameName === "" ? localStorage.getItem("gameName") : gameName,
             url: url === "" ? localStorage.getItem("url") : url,
             author: author === "" ? localStorage.getItem("author") : author,

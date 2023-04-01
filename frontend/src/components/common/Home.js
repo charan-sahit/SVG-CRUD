@@ -23,7 +23,7 @@ const Home = (props) => {
   useEffect(() => {
     // get all the games in database
   axios
-  .get("http://localhost:4000/game/")
+  .get("https://svg-crud-bqpq.onrender.com/game/")
   .then((response) => {
       console.log(response.data);
       setGames(response.data);
@@ -87,7 +87,7 @@ const Home = (props) => {
               pubDate: pubDate
             };
             axios
-              .post("http://localhost:4000/game/add", newGame)
+              .post("https://svg-crud-bqpq.onrender.com/game/add", newGame)
 
               .then((response) => {
                 alert("Created\t" + response.data.gameName);
@@ -132,7 +132,7 @@ const Home = (props) => {
                 <Button
                   onClick={() => {
                     axios
-                    .delete("http://localhost:4000/game/delete/" + game._id)
+                    .delete("https://svg-crud-bqpq.onrender.com/game/delete/" + game._id)
                     .then((response) => {
                       alert("Deleted\t" + response.data.gameName);
                       console.log(response.data);
