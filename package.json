@@ -1,0 +1,25 @@
+{
+  "name": "mern-stack-boilerplate",
+  "version": "1.0.0",
+  "description": "* For Linux:\r ```\r curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -\r sudo apt-get install -y nodejs\r ```",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "cd backend && npm install",
+    "start-server": "cd server && npm start",
+    "install-client": "cd frontend && npm install",
+    "build-client": "cd frontend && npm run build",
+    "start-client": "cd frontend && npm start"  
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KanishAnand/mern-stack-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KanishAnand/mern-stack-boilerplate/issues"
+  },
+  "homepage": "https://github.com/KanishAnand/mern-stack-boilerplate#readme"
+}
