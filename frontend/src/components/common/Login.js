@@ -22,7 +22,7 @@ const Login = () => {
     const onSubmit = (event) => {
         // navigate to /dashboard
         localStorage.setItem('email', email)
-        navigate("/")
+        navigate("/dashboard")
     }
   return (
     <div>
