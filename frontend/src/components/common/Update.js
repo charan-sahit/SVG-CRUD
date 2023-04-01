@@ -93,11 +93,11 @@ const Update = () => {
 
          onClick={ async () =>{
 
-          const pattern =  /^https?:\/\/[\w.-]+\.[a-z]{2,}$/i;
-            if(!pattern.test(url)) {
-              alert("Please fill in a valid URL");
-              return;
-            }
+          // const pattern =  /^https?:\/\/[\w.-]+\.[a-z]{2,}$/i;
+          //   if(!pattern.test(url)) {
+          //     alert("Please fill in a valid URL");
+          //     return;
+          //   }
            const response = await axios.post("https://svg-crud-bqpq.onrender.com/game/update/" + localStorage.getItem("id"), {
             gameName: gameName === "" ? localStorage.getItem("gameName") : gameName,
             url: url === "" ? localStorage.getItem("url") : url,
